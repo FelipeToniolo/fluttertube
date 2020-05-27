@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:fluttertube/bloc/favorite_bloc.dart';
 import 'package:fluttertube/bloc/videos_bloc.dart';
 import 'package:fluttertube/delegates/data_search.dart';
+import 'package:fluttertube/pages/favorites_page.dart';
 import 'package:fluttertube/widgets/videos_tile.dart';
 
-class Home extends StatelessWidget {
+class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bloc = BlocProvider.of<VideosBloc>(context);
@@ -39,7 +40,10 @@ class Home extends StatelessWidget {
               Icons.star,
               color: Colors.amber,
             ),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => FavoritesPage()));
+            },
           ),
           Builder(
             builder: (context) => IconButton(
@@ -55,7 +59,7 @@ class Home extends StatelessWidget {
             ),
           ),
         ],
-        title: Container(height: 30, child: Image.asset("image/logo.png")),
+        title: Container(height: 40, child: Image.asset("image/logo.png")),
         elevation: 0,
       ),
       body: StreamBuilder(

@@ -2,7 +2,7 @@ import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertube/bloc/favorite_bloc.dart';
 import 'package:fluttertube/bloc/videos_bloc.dart';
-import 'package:fluttertube/home.dart';
+import 'package:fluttertube/pages/home_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -22,6 +22,6 @@ class MyApp extends StatelessWidget {
                 theme: ThemeData(
                   primarySwatch: Colors.blue,
                 ),
-                home: Home())));
+                home: HomePage())));
   }
 }
