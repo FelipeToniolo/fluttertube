@@ -1,5 +1,6 @@
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertube/bloc/favorite_bloc.dart';
 import 'package:fluttertube/bloc/videos_bloc.dart';
 import 'package:fluttertube/delegates/data_search.dart';
 import 'package:fluttertube/widgets/videos_tile.dart';
@@ -15,14 +16,24 @@ class Home extends StatelessWidget {
         backgroundColor: Colors.black87,
         actions: <Widget>[
           Align(
-              alignment: Alignment.center,
-              child: Text(
-                "0",
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold),
-              )),
+            alignment: Alignment.center,
+            child: StreamBuilder(
+              initialData: {},
+              stream: BlocProvider.of<FavoriteBloc>(context).outFavorites,
+              builder: (context, snapshot) {
+                if (snapshot.hasData)
+                  return Text(
+                    "${snapshot.data.length}",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold),
+                  );
+                else
+                  return Container();
+              },
+            ),
+          ),
           IconButton(
             icon: Icon(
               Icons.star,
@@ -56,7 +67,7 @@ class Home extends StatelessWidget {
               itemBuilder: (context, index) {
                 if (index < snapshot.data.length) {
                   return VideoTile(snapshot.data[index]);
-                } else {
+                } else if (index > 1) {
                   bloc.inSearch.add(null);
                   return Container(
                     height: 40,
@@ -66,6 +77,8 @@ class Home extends StatelessWidget {
                       valueColor: AlwaysStoppedAnimation<Color>(Colors.blue),
                     ),
                   );
+                } else {
+                  return Container();
                 }
               },
             );
