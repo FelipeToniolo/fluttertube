@@ -4,6 +4,7 @@ import 'package:fluttertube/credentials.dart';
 import 'package:fluttertube/models/video.dart';
 import 'package:http/http.dart' as http;
 
+//Chave da API Youtube
 String apiKeyYouTube = getKey();
 
 class Api {

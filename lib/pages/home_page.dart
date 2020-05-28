@@ -87,7 +87,16 @@ class HomePage extends StatelessWidget {
               },
             );
           } else
-            return Container();
+            //Pesquisaa inicial
+            bloc.inSearch.add("hulk massinha");
+          return Container(
+            height: 40,
+            width: 40,
+            alignment: Alignment.center,
+            child: CircularProgressIndicator(
+              valueColor: AlwaysStoppedAnimation<Color>(Colors.blue),
+            ),
+          );
         },
       ),
     );

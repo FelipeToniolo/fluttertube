@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
             bloc: FavoriteBloc(),
             child: MaterialApp(
                 debugShowCheckedModeBanner: false,
-                title: 'Flutter Demo',
+                title: 'ArThube',
                 theme: ThemeData(
                   primarySwatch: Colors.blue,
                 ),
